@@ -15,6 +15,8 @@ namespace MvcProje.Controllers
             var degerler = db.TblUrunler.ToList();
             return View(degerler);
         }
+
+        // Ürün ekleme fonksiyonu
         [HttpGet]
         public ActionResult UrunEkle()
         {
