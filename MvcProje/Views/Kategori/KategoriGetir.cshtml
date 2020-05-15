@@ -6,13 +6,14 @@
 
 @using (Html.BeginForm("Guncelle", "Kategori", FormMethod.Post))
 {
-<div class="form-group">
-    @Html.LabelFor(m => m.KATEGORIID)
-    @Html.TextBoxFor(m => m.KATEGORIID, new { @class = "form-control" })
-    <br />
-    @Html.LabelFor(m => m.KATEGORAD)
-    @Html.TextBoxFor(m => m.KATEGORAD, new { @class = "form-control" })
-</div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.KATEGORIID)
+        @Html.TextBoxFor(m => m.KATEGORIID, new { @class = "form-control" })
+        <br />
+        <label><b>KATEGORİ ADI</b></label>
+        @* @Html.LabelFor(m => m.KATEGORAD)*@
+        @Html.TextBoxFor(m => m.KATEGORAD, new { @class = "form-control" })
+    </div>
     <div>
         <button class="btn btn-warning">Kategori Güncelle</button>
 

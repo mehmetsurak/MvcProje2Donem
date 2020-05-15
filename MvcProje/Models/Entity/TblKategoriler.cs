@@ -11,7 +11,8 @@ namespace MvcProje.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TblKategoriler
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,8 @@ namespace MvcProje.Models.Entity
         }
     
         public short KATEGORIID { get; set; }
+           
+        [Required(ErrorMessage = "Bu Alaný Boþ býrakamazsýnýz!")]
         public string KATEGORAD { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

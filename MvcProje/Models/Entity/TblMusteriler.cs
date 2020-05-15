@@ -11,7 +11,8 @@ namespace MvcProje.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TblMusteriler
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,8 @@ namespace MvcProje.Models.Entity
         }
     
         public int MUSTERIID { get; set; }
+        [StringLength(50,ErrorMessage ="En fazla 50 karakterlik isim girin.")]
+        [Required(ErrorMessage ="Bu Alanı Boş bırakamazsınız!")]
         public string MUSTERIAD { get; set; }
         public string MUSTERISOYAD { get; set; }
     

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcProje.Models.Entity;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MvcProje.Controllers
 {
@@ -11,9 +13,10 @@ namespace MvcProje.Controllers
     {
         // GET: Kategori
         MvcDbStokEntities db = new MvcDbStokEntities();
-        public ActionResult Index()
+        public ActionResult Index(int sayfa=1)
         {
-            var degerler = db.TblKategoriler.ToList();
+            //var degerler = db.TblKategoriler.ToList();
+            var degerler = db.TblKategoriler.ToList().ToPagedList(sayfa, 4);
             return View(degerler);
         }
 
@@ -27,6 +30,10 @@ namespace MvcProje.Controllers
         [HttpPost]
         public ActionResult YeniKategori(TblKategoriler prm1)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("YeniKategori");
+            }
             db.TblKategoriler.Add(prm1);
             db.SaveChanges();
             return View();
@@ -42,6 +49,13 @@ namespace MvcProje.Controllers
         {
             var ktgr = db.TblKategoriler.Find(id);
             return View("KategoriGetir", ktgr);
+        }
+        public ActionResult Guncelle(TblKategoriler prm1)
+        {
+            var ktg = db.TblKategoriler.Find(prm1.KATEGORIID);
+            ktg.KATEGORAD = prm1.KATEGORAD;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

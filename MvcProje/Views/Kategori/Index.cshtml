@@ -1,5 +1,7 @@
 ﻿@using MvcProje.Models.Entity
-@model List<TblKategoriler>
+@using PagedList
+@using PagedList.Mvc;
+@model PagedList.IPagedList<TblKategoriler>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -14,18 +16,19 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <th>@item.KATEGORIID</th>
-            <td>@item.KATEGORAD</td>
-            <td><a href="/Kategori/SIL/@item.KATEGORIID" class="btn btn-danger">SİL</a></td>
-            <td><a href="/Kategori/KategoriGetir/@item.KATEGORIID" class="btn btn-success">GÜNCELLE</a></td>
+            <tr>
+                <th>@item.KATEGORIID</th>
+                <td>@item.KATEGORAD</td>
+                <td><a href="/Kategori/SIL/@item.KATEGORIID" class="btn btn-danger">SİL</a></td>
+                <td><a href="/Kategori/KategoriGetir/@item.KATEGORIID" class="btn btn-success">GÜNCELLE</a></td>
 
 
 
-        </tr>
-        } 
+            </tr>
+        }
 
     </tbody>
 
 </table>
+@Html.PagedListPager((IPagedList)Model,sayfa=>Url.Action("Index",new {sayfa }))
 <a href="/Kategori/YeniKategori/" class="btn btn-primary">Yeni Kategori Ekle</a>
