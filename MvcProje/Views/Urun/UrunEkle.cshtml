@@ -11,22 +11,29 @@
     </div>
     <div>
         <label>Adı</label>
-        <input type="text" class="form-control" name="AD" required="" />
+        <textarea required id="ad" name="AD"></textarea>
+
     </div>
     <div>
         <label>Kategori Seçiniz</label>
-        @Html.DropDownListFor(m=>m.TblKategoriler.KATEGORIID,(List<SelectListItem>)ViewBag.dgr,new {@class="form-control" })
+
+        @Html.DropDownListFor(m => m.TblKategoriler.KATEGORIID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
     </div>
     <div>
         <label>Fiyatı</label>
         <input type="text" class="form-control" name="FIYAT" required="" />
-    </div>
+
+    </div> 
     <div>
         <label>Stok Adet</label>
         <input type="text" class="form-control" name="STOK" required="" />
+
     </div>
     <div>
         <button class="btn btn-info">Ürün Ekle</button>
     </div>
 </form>
 
+<script type="text/javascript">
+    CKEDITOR.replace('ad');
+</script>

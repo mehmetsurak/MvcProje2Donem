@@ -12,13 +12,20 @@ namespace MvcProje.Controllers
         MvcDbStokEntities db = new MvcDbStokEntities();
         public ActionResult Index(string p)
         {
-            var degerler = from d in db.TblMusteriler select d;
-            if (!string.IsNullOrEmpty(p))
+            if (Convert.ToString(Session["admin"]) == "evet")
             {
-                degerler = degerler.Where(m => m.MUSTERIAD.Contains(p));
+                var degerler = from d in db.TblMusteriler select d;
+                if (!string.IsNullOrEmpty(p))
+                {
+                    degerler = degerler.Where(m => m.MUSTERIAD.Contains(p));
 
+                }
+                return View(degerler.ToList());
             }
-            return View(degerler.ToList());
+            else
+            {
+                return RedirectToAction("Index", "Home", new { area = "" });
+            }
             //var degerler = db.TblMusteriler.ToList();
             //return View(degerler);
         }

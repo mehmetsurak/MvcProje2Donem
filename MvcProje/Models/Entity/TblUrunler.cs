@@ -11,7 +11,9 @@ namespace MvcProje.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
+
     public partial class TblUrunler
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,14 +21,23 @@ namespace MvcProje.Models.Entity
         {
             this.TblSatıslar = new HashSet<TblSatıslar>();
         }
-    
+
+        [Required]
         public int URUNID { get; set; }
+        [Required]
+        [AllowHtml]
         public string URUNAD { get; set; }
+        [Required]
+        [AllowHtml]
         public string AD { get; set; }
+        [Required]
         public Nullable<short> URUNKATEGORI { get; set; }
+        [Required]
         public Nullable<decimal> FIYAT { get; set; }
+        [Required]
         public Nullable<byte> STOK { get; set; }
-    
+        [Required]
+     
         public virtual TblKategoriler TblKategoriler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblSatıslar> TblSatıslar { get; set; }

@@ -15,9 +15,16 @@ namespace MvcProje.Controllers
         MvcDbStokEntities db = new MvcDbStokEntities();
         public ActionResult Index(int sayfa=1)
         {
-            //var degerler = db.TblKategoriler.ToList();
-            var degerler = db.TblKategoriler.ToList().ToPagedList(sayfa, 4);
-            return View(degerler);
+            if (Convert.ToString(Session["admin"]) == "evet")
+            {
+                //var degerler = db.TblKategoriler.ToList();
+                var degerler = db.TblKategoriler.ToList().ToPagedList(sayfa, 6);
+                return View(degerler);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home", new { area = "" });
+            }
         }
 
         [HttpGet]

@@ -17,15 +17,15 @@
     @Html.TextBoxFor(m => m.AD, new { @class = "form-control" })
     <br />
     @Html.LabelFor(m => m.URUNKATEGORI)
-    @Html.DropDownListFor(m=>m.TblKategoriler.KATEGORIID,(List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+    @Html.DropDownListFor(m => m.TblKategoriler.KATEGORIID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
     @*@Html.TextBoxFor(m => m.URUNKATEGORI, new { @class = "form-control" })*@
     <br />
     @Html.LabelFor(m => m.FIYAT)
     @Html.TextBoxFor(m => m.FIYAT, new { @class = "form-control" })
-
     <br />
     @Html.LabelFor(m => m.STOK)
     @Html.TextBoxFor(m => m.STOK, new { @class = "form-control" })
+
 
 
 </div>

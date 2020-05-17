@@ -12,8 +12,16 @@ namespace MvcProje.Controllers
         MvcDbStokEntities db = new MvcDbStokEntities();
         public ActionResult Index()
         {
-            var degerler = db.TblUrunler.ToList();
-            return View(degerler);
+            if(Convert.ToString(Session["admin"]) == "evet")
+            {
+                var degerler = db.TblUrunler.ToList();
+                return View(degerler);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home", new { area = "" });
+            }
+
         }
 
         // Ürün ekleme fonksiyonu

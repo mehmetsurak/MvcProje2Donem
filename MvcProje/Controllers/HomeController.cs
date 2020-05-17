@@ -10,21 +10,35 @@ namespace MvcProje.Controllers
     {
         public ActionResult Index()
         {
+            //ViewBag.İsim = "Ahmet";
+            //ViewData["ad"] = "Mehmet";
+         
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
+
         }
 
-        public ActionResult Contact()
+        [HttpPost]
+        public ActionResult Giris(string id, string sifre)
         {
-            ViewBag.Message = "Your contact page.";
+            if(id == "mehmet" && sifre == "surak")
+            {
+                Session.Add("admin", "evet");
+                return RedirectToAction("Index", "Urun", new { area = "" });
 
-            return View();
+            }
+            else
+            {
+                Session.Add("admin", "hayir");
+                return RedirectToAction("Index", "Home", new { area = "" });
+            }
+
         }
+
+     
     }
 }

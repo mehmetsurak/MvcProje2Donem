@@ -23,8 +23,9 @@ namespace MvcProje.Models.Entity
     
         public int MUSTERIID { get; set; }
         [StringLength(50,ErrorMessage ="En fazla 50 karakterlik isim girin.")]
-        [Required(ErrorMessage ="Bu Alanı Boş bırakamazsınız!")]
+        [Required(ErrorMessage ="Müşterinin Adını Giriniz!")]
         public string MUSTERIAD { get; set; }
+        [Required(ErrorMessage = "Müşterinin Soyadını Giriniz!")]
         public string MUSTERISOYAD { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
